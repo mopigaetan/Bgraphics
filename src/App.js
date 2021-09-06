@@ -7,6 +7,7 @@ import { Box, ThemeProvider, Typography } from '@material-ui/core'
 import Home from './Pages/Home/Home.js';
 import Devis from './Pages/Devis/Devis.js'
 import Services from './Pages/Services/Services.js'
+import Works from './Pages/Works/Works.js'
 import Navbar from './Components/Navbar/Navbar.js';
 import './App.scss';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -146,7 +147,7 @@ function App() {
           
           {/** Réalisations */}
           <Route path="/works">
-            {/* <Work /> */}
+            <Works />
           </Route>
 
           <Route>

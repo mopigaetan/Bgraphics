@@ -20,6 +20,7 @@ import "slick-carousel/slick/slick-theme.css";
 //Icons 
 import IconBack from '@material-ui/icons/ArrowBack';
 import IconForward from '@material-ui/icons/KeyboardBackspace';
+import WorkItem from '../../Components/WorkItem/WorkItem';
 
 // Modif html page title
 document.title = document.title.split('-')[0] + '- Accueil'
@@ -43,12 +44,12 @@ const services = [
 ]
 
 const works = [
-	{ id: "1", imageUrl: `${work1}`, title: 'SERIGRAPHIE SUR TEXTILES' },
-	{ id: "2", imageUrl: `${work2}`, title: 'PHOTOGRAPHIE SHOOTING' },
-	{ id: "3", imageUrl: `${work3}`, title: 'PHOTOGRAPHIE' },
-	{ id: "4", imageUrl: `${work4}`, title: 'SERIGRAPHIE SUR TEXTILES' },
-	{ id: "5", imageUrl: `${work5}`, title: 'INFOGRAPHIE' },
-	{ id: "6", imageUrl: `${work6}`, title: 'SERIGRAPHIE SUR TEXTILES' },
+	{ id: "1", imageUrl: `${work1}`, title: 'SERIGRAPHIE SUR TEXTILES', body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing eli" },
+	{ id: "2", imageUrl: `${work2}`, title: 'PHOTOGRAPHIE SHOOTING', body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing eli" },
+	{ id: "3", imageUrl: `${work3}`, title: 'PHOTOGRAPHIE', body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing eli" },
+	{ id: "4", imageUrl: `${work4}`, title: 'SERIGRAPHIE SUR TEXTILES', body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing eli" },
+	{ id: "5", imageUrl: `${work5}`, title: 'INFOGRAPHIE', body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing eli" },
+	{ id: "6", imageUrl: `${work6}`, title: 'SERIGRAPHIE SUR TEXTILES', body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing eli" },
 ]
 const settings = {
 	dots: false,
@@ -157,22 +158,7 @@ const Home = () => {
 							<Typography component='p' className="subtitler">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor</Typography>
 						</Box>
 						<Box display='flex' flexWrap='wrap'>
-							{works.map(work => <Box key={work.id} className='work-box' style={{ backgroundImage: `url(${work.imageUrl})` }}>
-								<Box className="contained">
-									<Container style={{ display: 'flex', justifyContent: 'center', alignItems: "center" }}>
-										<Typography component='h4' className="title">{work.title}</Typography>
-									</Container>
-								</Box>
-								<Box className='slide-up' bgcolor={theme.palette.primary.dark}>
-									<Container style={{ width: '100%', height: 'auto' }}>
-										<Container>
-											<Typography component='h4' className="title" style={{ paddingBottom: theme.spacing(4) }}>{work.title}</Typography>
-											<Typography component='p' className="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing eli</Typography>
-										</Container>
-									</Container>
-								</Box>
-							</Box>
-							)}
+							{works.map(work => <WorkItem work={work}/>)}
 						</Box>
 						<Box display="flex" justifyContent='center' alignItems='center' paddingBottom={theme.spacing(0.75)}>
 							<Link style={{ margin: theme.spacing(1.5), color: theme.palette.primary.main, display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '2px solid' + theme.palette.primary.main, padding: theme.spacing(0.5) }} href="/works">
