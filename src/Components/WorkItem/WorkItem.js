@@ -1,11 +1,13 @@
 import React from 'react'
-import { Box, Container, Typography, useTheme } from '@material-ui/core'
+import { Box, Container, Typography, useTheme, useMediaQuery } from '@material-ui/core'
 import './WorkItem.scss';
 
 const WorkItem = ({work}) => {
   const theme = useTheme()
+  const inMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
-    <Box key={work.id} className='work-box' style={{ backgroundImage: `url(${work.imageUrl})` }}>
+    <Box key={work.id} width={inMobile?"100%": "50%"} className='work-box' style={{ backgroundImage: `url(${work.imageUrl})` }}>
       <Box className="contained">
         <Container style={{ display: 'flex', justifyContent: 'center', alignItems: "center" }}>
           <Typography component='h4' className="title">{work.title}</Typography>

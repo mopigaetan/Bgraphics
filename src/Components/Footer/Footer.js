@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Box, Container, Typography, Link, Button, useTheme, IconButton, Grid } from '@material-ui/core'
+import { Box, Container, Typography, Link, Button, useTheme, IconButton, Grid, useMediaQuery } from '@material-ui/core'
 import './Footer.scss';
 import logo from '../../Assets/logo.png'
 import { useHistory } from 'react-router';
@@ -13,12 +13,12 @@ import IconInstagram from '@material-ui/icons/Instagram';
 const Footer = () => {
   const theme = useTheme();
   const history = useHistory();
-
+const inMobile = useMediaQuery(theme.breakpoints.down("sm"))
   return (
     <Fragment>
       <Box id='newsletter-box' style={{ padding: theme.spacing(5, 2) }}>
         <Container>
-          <Typography component='h4' className="title" style={{ paddingBottom: theme.spacing(2) }}>NEWSLETTER</Typography>
+          <Typography component='h4' className="title" style={{ paddingBottom: theme.spacing(2), fontSize: inMobile? "56px": "72px" }}>NEWSLETTER</Typography>
           <Typography component='p' className="body" style={{ padding: theme.spacing(0.2, 0, 4) }}>Restez au courant de toutes les actualités de B Graphic Vision</Typography>
           <Box id='input-newsletter' paddingLeft={theme.spacing(0.6)}>
             <input
@@ -41,14 +41,14 @@ const Footer = () => {
       </Box>
     <Box padding={theme.spacing(4, 0, 0)}>
       <Container style={{ paddingBottom: theme.spacing(10) }}>
-        <Grid container>
-          <Grid item lg={5}>
+        <Grid container spacing={1}>
+          <Grid item sm={5} xs={12}>
             <Link href="/">
               <img src={logo} alt="bgraphics vision logo" />
             </Link>
           </Grid>
-          <Grid container item lg={7}>
-            <Grid item lg={3}>
+          <Grid spacing={3} container item sm={7} xs={12}>
+            <Grid item xs={12} sm={6} md={3} >
               <Typography component='span' style={{ fontWeight: 'bold', borderBottom: '2px solid black', paddingBottom: theme.spacing(1) }}>Entreprise &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Typography>
               <Typography style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: theme.spacing(2, 0) }}>
                 <Link style={{ margin: theme.spacing(0.75, 0), color: theme.palette.common.black }} href="/works">
@@ -62,7 +62,7 @@ const Footer = () => {
             			</Link>
               </Typography>
             </Grid>
-            <Grid item lg={5}>
+            <Grid item xs={12} sm={6} md={5}>
               <Typography component='span' style={{ fontWeight: 'bold', borderBottom: '2px solid black', paddingBottom: theme.spacing(1) }}>Contactez-nous &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Typography>
               <Typography style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: theme.spacing(2, 0) }}>
                 <Link style={{ margin: theme.spacing(0.75, 0), color: theme.palette.common.black }} href="/">
@@ -94,7 +94,7 @@ const Footer = () => {
                 Demandez un devis
             </Button>
             </Grid>
-            <Grid item lg={4}>
+            <Grid item xs={12}   sm={12} md={4}>
               <Typography component='h5'>Suivez-nous</Typography>
               <Box>
                 <IconButton style={{ margin: theme.spacing(0.5), backgroundColor: theme.palette.primary.dark, color: theme.palette.common.white }}>

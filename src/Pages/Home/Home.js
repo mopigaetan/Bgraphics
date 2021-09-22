@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Typography, Link, Button, useTheme, IconButton } from '@material-ui/core'
+import { Box, Container, Typography, Link, Button, useTheme, IconButton, useMediaQuery } from '@material-ui/core'
 import './Home.scss';
 import Slider from "react-slick";
 import { useHistory } from 'react-router';
@@ -58,6 +58,36 @@ const settings = {
 	slidesToScroll: 3,
 	nextArrow: <SampleNextArrow />,
 	prevArrow: <SampleNextArrow />,
+	responsive: [
+        {
+			breakpoint: 1280,
+			settings: {
+			  slidesToShow: 4,
+			  slidesToScroll: 4,
+			}
+		  },
+		  {
+			breakpoint: 1100,
+			settings: {
+			  slidesToShow: 3,
+			  slidesToScroll: 3,
+			}
+		  },
+		{
+          breakpoint: 850,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
 };
 
 
@@ -73,6 +103,8 @@ function SampleNextArrow(props) {
 const Home = () => {
 	const theme = useTheme();
 	const history = useHistory();
+	const inMobileMD = useMediaQuery(theme.breakpoints.down("md"));
+	const inMobileSM = useMediaQuery(theme.breakpoints.down("sm"));
 
 	return (
 		<Box id="home-wrapper" >
@@ -88,9 +120,9 @@ const Home = () => {
 				>
 					{data.map(slide => <Box key={slide.id} style={{ backgroundImage: `url(${slide.imageUrl})` }} className='slide'>
 						<Container id="home-container">
-							<Box width="100%" maxWidth="650px">
+							<Box width="100%" maxWidth={inMobileSM?null:"650px"}>
 								<Typography component='h2' className="header-title-text">SERIGRAPHIE SUR TEXTILE</Typography>
-								<Typography component='p' className='header-body-text' style={{ textAlign: 'left', padding: theme.spacing(1, 0, 4) }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</Typography>
+								<Typography component='p' className='header-body-text' style={{ textAlign: 'left', padding: theme.spacing(1, 0, 3) }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</Typography>
 								<Box textAlign='left'>
 									<Button
 										variant='contained'
@@ -101,18 +133,22 @@ const Home = () => {
 											borderRadius: 50,
 											textTransform: 'initial',
 											fontSize: 16,
+											margin: theme.spacing(0.5,0),
+											marginRight: theme.spacing(3),
+											width: inMobileSM?'100%': null
 										}}
 									>En Savoir +</Button>
 									<Button
 										variant='contained'
 										style={{
+											margin: theme.spacing(0.5, 0),
 											backgroundColor: theme.palette.secondary.main,
 											color: theme.palette.common.white,
 											padding: theme.spacing(1, 4),
 											borderRadius: 50,
-											marginLeft: theme.spacing(3),
 											textTransform: 'initial',
 											fontSize: 16,
+											width: inMobileSM?'100%': null
 										}}
 										onClick={()=>history.push('/request')}
 									>
@@ -126,8 +162,8 @@ const Home = () => {
 			<SubHeader/>
 			<Box bgcolor='white' width='100%' height='auto'>
 				<Container>
-					<Box width='100%' height='300px' display='grid' gridTemplateColumns='auto 900px' gridTemplateRows='100%' justifyContent="space-between" alignItems='center'>
-						<Box width='100%'>
+					<Box width='100%' height='auto' display={inMobileMD?'flex':'grid'} gridTemplateColumns='auto 900px' gridTemplateRows='100%' flexWrap="wrap" justifyContent="space-between" alignItems='center'>
+						<Box width='100%' justifyContent='center' display={inMobileMD?'flex':'block'} alignItems='center' flexDirection='column'>
 							<Typography component='h4' className="titler">NOS SERVICES</Typography>
 							<Typography component='p' className="subtitler">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor</Typography>
 						</Box>
