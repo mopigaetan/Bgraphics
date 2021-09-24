@@ -18,7 +18,7 @@ const inMobile = useMediaQuery(theme.breakpoints.down("sm"))
     <Fragment>
       <Box id='newsletter-box' style={{ padding: theme.spacing(5, 2) }}>
         <Container>
-          <Typography component='h4' className="title" style={{ paddingBottom: theme.spacing(2), fontSize: inMobile? "56px": "72px" }}>NEWSLETTER</Typography>
+          <Typography component='h4' className="title" style={{ paddingBottom: theme.spacing(2), fontSize: inMobile? "40px": "72px" }}>NEWSLETTER</Typography>
           <Typography component='p' className="body" style={{ padding: theme.spacing(0.2, 0, 4) }}>Restez au courant de toutes les actualités de B Graphic Vision</Typography>
           <Box id='input-newsletter' paddingLeft={theme.spacing(0.6)}>
             <input

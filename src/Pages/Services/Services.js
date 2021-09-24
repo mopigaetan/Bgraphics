@@ -144,49 +144,38 @@ const Services = () => {
         padding={theme.spacing(2, 0)}
       >
         <Container>
-          <Container>
-            <Container>
-                <Box display="flex" flexDirection="column">
-                  {console.log(services)}
-                  {services.map((service) => (
-                    <Box
-                      className="service-wrapper"
-                      key={service.id}
-                      width="100%"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      margin={theme.spacing(2.5, 0)}
-                    >
-                      <Box width="100%">
-                        <Typography component="h4" className="titler">
-                          {service.name}
-                        </Typography>
-                        <Typography component="p" className="subtitler">
-                          {service.body}
-                        </Typography>
-                      </Box>
-                      <Box
-                        width="100%"
-                        height="100%"
-                        margin={theme.spacing(2.5, 0)}
-                      >
-                        <Slider {...settings}>
-                          {service.works.map((work, index) => (
-                            <Box
-                              key={work.id}
-                              display="flex"
-                              className="work-slide"
-                            >
-                              <Box
-                                style={{
-                                  backgroundImage: `url(${work.imageUrl})`,
-                                  margin: theme.spacing(1, 1),
-                                }}
-                              >
-                                <Box>
-                                  {/** <Typography
+          <Box display="flex" flexDirection="column">
+            {services.map((service) => (
+              <Box
+                className="service-wrapper"
+                key={service.id}
+                width="100%"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="center"
+                margin={theme.spacing(2.5, 0)}
+              >
+                <Box width="100%">
+                  <Typography component="h4" className="titler">
+                    {service.name}
+                  </Typography>
+                  <Typography component="p" className="subtitler">
+                    {service.body}
+                  </Typography>
+                </Box>
+                <Box width="100%" height="100%" margin={theme.spacing(2.5, 0)}>
+                  <Slider {...settings}>
+                    {service.works.map((work, index) => (
+                      <Box key={work.id} display="flex" className="work-slide">
+                        <Box
+                          style={{
+                            backgroundImage: `url(${work.imageUrl})`,
+                            margin: theme.spacing(1, 1),
+                          }}
+                        >
+                          <Box>
+                            {/** <Typography
                                     component="h4"
                                     className="white-shadowed"
                                   >
@@ -195,17 +184,15 @@ const Services = () => {
                                   <IconForward
                                     style={{ transform: "rotate(180deg)" }}
                                   /> */}
-                                </Box>
-                              </Box>
-                            </Box>
-                          ))}
-                        </Slider>
+                          </Box>
+                        </Box>
                       </Box>
-                    </Box>
-                  ))}
+                    ))}
+                  </Slider>
                 </Box>
-              </Container>
-          </Container>
+              </Box>
+            ))}
+          </Box>
         </Container>
       </Box>
       <Article
