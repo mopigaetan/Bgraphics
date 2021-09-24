@@ -24,18 +24,19 @@ const Article = ({ article }) => {
         className="article-preview"
         display={inMobile ? "flex" : "grid"}
         bgcolor={theme.palette.common.black}
+        alignItems={inMobile ? "center" : null}
       >
         {inMobile ? (
           <Box className="text-part">
-            <Container style={{ height: "100%" }}>
+            <Container style={{ height: "100%", padding: theme.spacing(2,1) }}>
               <Container
                 className="body-wrapper"
-                style={{ position: "relative", width: "100%" }}
+                style={{ position: "relative", width: "100%", height: '100%' }}
               >
                 <Typography
                   component="h4"
                   className="title"
-                  style={{ paddingBottom: theme.spacing(4), width: "100%" }}
+                  style={{ paddingBottom: theme.spacing(4), width: "100%", fontSize: 'calc(1vw + 36px)' }}
                 >
                   {article.title}
                 </Typography>

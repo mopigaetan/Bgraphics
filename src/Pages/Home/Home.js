@@ -164,8 +164,8 @@ const Home = () => {
 				<Container>
 					<Box width='100%' height='auto' display={inMobileMD?'flex':'grid'} gridTemplateColumns='auto 900px' gridTemplateRows='100%' flexWrap="wrap" justifyContent="space-between" alignItems='center'>
 						<Box width='100%' justifyContent='center' display={inMobileMD?'flex':'block'} alignItems='center' flexDirection='column'>
-							<Typography component='h4' className="titler">NOS SERVICES</Typography>
-							<Typography component='p' className="subtitler">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor</Typography>
+							<Typography component='h4' className="titler" style={{textAlign: inMobileMD?"center":""}}>NOS SERVICES</Typography>
+							<Typography component='p' className="subtitler" style={{textAlign: inMobileMD?"center":""}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor</Typography>
 						</Box>
 						<Box width='100%' height='100%'>
 							<Slider {...settings}>

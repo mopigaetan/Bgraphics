@@ -1,5 +1,6 @@
     .article-preview {
-      height: 500px;
+      min-height: 500px;
+      height: auto;
       position: relative;
       display: grid;
       grid-template-columns: 36% 64%;
