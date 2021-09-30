@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import { Box, Button, Container, Typography, useTheme } from '@material-ui/core';
 import PageHeader from '../../Components/PageHeader/PageHeader.js'
@@ -16,7 +16,6 @@ import work4 from '../../Assets/work-4.jpg'
 import work5 from '../../Assets/work-5.jpg'
 import work6 from '../../Assets/work-6.jpg'
 
-
 const works = [
 	{ id: "1", imageUrl: `${work1}`, title: 'SERIGRAPHIE SUR TEXTILES', body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing eli" },
 	{ id: "2", imageUrl: `${work2}`, title: 'PHOTOGRAPHIE SHOOTING', body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipiscing eli" },
@@ -30,10 +29,31 @@ const Services = () => {
 
 	const theme = useTheme();
 	const history = useHistory();
-
+	const [works, setWorks] = useState([]);
 	// Modif html page title
 	document.title = document.title.split('-')[0] + '- Nos Réalisations'
-
+	useEffect(() => {
+		axios("https://bgraphics237.herokuapp.com/realisations").then((data) => {
+		  let worksData = data?.data?.realisations;
+		  let sanitizedWorksData = [];
+		  sanitizedWorksData = worksData.map((work) => {
+			return {
+			  id: work["_id"],
+			  title: work["name"],
+			  body: work["description"],
+			  images: work["imageUrls"].map((image) => {
+				return {
+				  id: image["asset_id"],
+				  imageUrl: image["url"],
+				  title: work["name"],
+				};
+			  }),
+			};
+		  });
+	
+		  setWorks(sanitizedWorksData);
+		});
+	}, []);
 	return (
 		<Box id='works-page'>
 			<PageHeader imageUrl={workHeader} text={'NOS Réalisations'}>
