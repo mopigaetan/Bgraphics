@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { Box, Container, Typography, Link, Button, useTheme, IconButton, useMediaQuery } from '@material-ui/core'
 import './Home.scss';
 import Slider from "react-slick";
@@ -16,7 +16,7 @@ import article1 from '../../Assets/article-1.jpg'
 import SubHeader from '../../Components/SubHeader/SubHeader';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import axios from 'axios'
 //Icons 
 import IconBack from '@material-ui/icons/ArrowBack';
 import IconForward from '@material-ui/icons/KeyboardBackspace';
@@ -105,7 +105,55 @@ const Home = () => {
 	const history = useHistory();
 	const inMobileMD = useMediaQuery(theme.breakpoints.down("md"));
 	const inMobileSM = useMediaQuery(theme.breakpoints.down("sm"));
+	const [services, setServices] = useState([]);
+	const [works, setWorks] = useState([]);
+  // Modif html page title
+  //document.title = document.title.split("-")[0] + "- Nos Services";
 
+  useEffect(() => {
+    axios("https://bgraphics237.herokuapp.com/services").then((data) => {
+      let servicesData = data?.data?.services;
+      let sanitizedServiceData = [];
+      sanitizedServiceData = servicesData.map((service) => {
+        return {
+          id: service["_id"],
+          title: service["name"],
+          body: service["description"],
+          images: service["imageUrls"].map((image) => {
+            return {
+              id: image["asset_id"],
+              imageUrl: image["url"],
+              title: service["name"],
+            };
+          }),
+        };
+      });
+
+      setServices(sanitizedServiceData);
+    });
+  }, []);
+  useEffect(() => {
+    axios("https://bgraphics237.herokuapp.com/realisations").then((data) => {
+      let worksData = data?.data?.realisations;
+      let sanitizedWorksData = [];
+      sanitizedWorksData = worksData.map((work) => {
+        return {
+          id: work["_id"],
+          title: work["name"],
+          body: work["description"],
+          images: work["imageUrls"].map((image) => {
+            return {
+              id: image["asset_id"],
+              imageUrl: image["url"],
+              title: work["name"],
+            };
+          }),
+        };
+      });
+
+      setWorks(sanitizedWorksData);
+    });
+  }, []);
 	return (
 		<Box id="home-wrapper" >
 			<Box>
