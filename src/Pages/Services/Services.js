@@ -25,6 +25,8 @@ import IconBack from "@material-ui/icons/ArrowBack";
 const settings = {
   dots: false,
   infinite: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
   slidesToShow: 3,
   slidesToScroll: 3,
   nextArrow: <SampleNextArrow />,
